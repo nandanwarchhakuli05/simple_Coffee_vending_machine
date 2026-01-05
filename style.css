@@ -1,0 +1,560 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #D2B48C 0%, #8B4513 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ==================== HEADER ==================== */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 8px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.header p {
+    color: rgba(255,255,255,0.9);
+    font-size: 16px;
+}
+
+/* ==================== MAIN LAYOUT ==================== */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+/* ==================== CARD STYLES ==================== */
+.card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.card-title {
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #8B4513;
+}
+
+/* ==================== MENU AREA ==================== */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.menu-item {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 20px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    border-color: #8B4513;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(139, 69, 19, 0.4);
+}
+
+.menu-item.selected {
+    border-color: #8B4513;
+    background: linear-gradient(135deg, #8B4513 0%, #6F4E37 100%);
+}
+
+.menu-item.selected .drink-name,
+.menu-item.selected .drink-price {
+    color: white;
+}
+
+.drink-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.menu-item:hover .drink-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.menu-item.selected .drink-icon {
+    transform: scale(1.15);
+    animation: drinkPulse 1s ease-in-out infinite;
+}
+
+@keyframes drinkPulse {
+    0%, 100% {
+        transform: scale(1.15);
+    }
+    50% {
+        transform: scale(1.25);
+    }
+}
+
+.drink-name {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.drink-price {
+    color: #8B4513;
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* ==================== CUSTOMIZATION AREA ==================== */
+.customization-section {
+    margin-bottom: 20px;
+}
+
+.customization-title {
+    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.option-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.option-btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 12px 20px;
+    border: 2px solid #e9ecef;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.option-btn:hover {
+    border-color: #8B4513;
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.option-btn.active {
+    background-color: #8B4513;
+    color: white;
+    border-color: #8B4513;
+}
+
+.btn-icon {
+    font-size: 18px;
+    display: inline-block;
+}
+
+.btn-icon-large {
+    font-size: 20px;
+    display: inline-block;
+}
+
+/* ==================== ORDER SUMMARY ==================== */
+.order-summary {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.summary-title {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+.summary-row.total {
+    border-top: 2px solid #dee2e6;
+    padding-top: 10px;
+    margin-top: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #2c3e50;
+}
+
+/* ==================== ACTION BUTTONS ==================== */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 18px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+    color: white;
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+}
+
+/* ==================== STOCK ALERTS ==================== */
+.stock-alerts-container {
+    margin-bottom: 25px;
+}
+
+.stock-alert {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stock-alert.warning {
+    border-left: 5px solid #feca57;
+    background: linear-gradient(135deg, #fff5e6 0%, #ffffff 100%);
+}
+
+.stock-alert.critical {
+    border-left: 5px solid #ff4757;
+    background: linear-gradient(135deg, #ffe6e6 0%, #ffffff 100%);
+}
+
+.stock-alert-icon {
+    font-size: 32px;
+}
+
+.stock-alert-content {
+    flex: 1;
+}
+
+.stock-alert-title {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.stock-alert-message {
+    color: #495057;
+    font-size: 14px;
+}
+
+/* ==================== STATUS AREA ==================== */
+.status-area {
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* ==================== DRINK READY NOTIFICATION ==================== */
+.drink-ready-notification {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(38, 222, 129, 0.5);
+    z-index: 10;
+    width: 90%;
+    max-width: 500px;
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.drink-ready-notification.hidden {
+    display: none;
+}
+
+@keyframes popIn {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.ready-animation {
+    text-align: center;
+}
+
+.ready-icon {
+    font-size: 80px;
+    animation: bounce 1s ease infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.ready-text {
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.ready-subtext {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.ready-drink-info {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 15px 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ==================== STATUS AREA STATES ==================== */
+
+.status-idle {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+}
+
+.status-preparing {
+    background: linear-gradient(135deg, #feca57 0%, #ff9ff3 100%);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+.status-ready {
+    background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+}
+
+.status-error {
+    background: linear-gradient(135deg, #ff4757 0%, #ff6348 100%);
+}
+
+.status-success {
+    background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%);
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.status-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.status-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.status-subtext {
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    margin-top: 8px;
+}
+
+/* ==================== STOCK & SALES GRID ==================== */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.info-card {
+    background-color: white;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.info-title {
+    color: #2c3e50;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #8B4513;
+}
+
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #8B4513;
+}
+
+.info-label {
+    color: #495057;
+    font-weight: 500;
+}
+
+.info-value {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.profit-highlight {
+    background: linear-gradient(135deg, #26de81 0%, #20bf6b 100%);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(38, 222, 129, 0.3);
+    margin-top: 15px;
+}
+
+.profit-label {
+    color: white;
+    font-size: 14px;
+    margin-bottom: 8px;
+    opacity: 0.9;
+}
+
+.profit-value {
+    color: white;
+    font-weight: 700;
+    font-size: 28px;
+}
+
+@media (max-width: 1024px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+}

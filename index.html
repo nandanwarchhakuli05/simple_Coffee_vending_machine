@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tea & Coffee Vending System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>☕ Tea & Coffee Vending Machine</h1>
+            <p>Select, Customize, and Enjoy Your Perfect Beverage</p>
+        </div>
+
+        <!-- ==================== MAIN LAYOUT ==================== -->
+        <div class="main-layout">
+            <!-- LEFT COLUMN: MENU -->
+            <div class="card">
+                <h2 class="card-title">📋 Menu - Select Your Drink</h2>
+                <div class="menu-grid">
+                    <div class="menu-item" onclick="selectDrink('tea')" id="menu-tea">
+                        <div class="drink-icon">🍵</div>
+                        <div class="drink-name">Tea</div>
+                        <div class="drink-price">₹15</div>
+                    </div>
+                    <div class="menu-item" onclick="selectDrink('coffee')" id="menu-coffee">
+                        <div class="drink-icon">☕</div>
+                        <div class="drink-name">Coffee</div>
+                        <div class="drink-price">₹20</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2 class="card-title">⚙️ Customize Your Order</h2>
+                
+                <!-- Sugar Options -->
+                <div class="customization-section">
+                    <div class="customization-title">Sugar Preference:</div>
+                    <div class="option-group">
+                        <button class="option-btn active" onclick="toggleSugar(true)" id="sugar-yes">
+                            <span class="btn-icon">🍬</span>
+                            <span>With Sugar</span>
+                        </button>
+                        <button class="option-btn" onclick="toggleSugar(false)" id="sugar-no">
+                            <span class="btn-icon">🚫</span>
+                            <span>Without Sugar</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="order-summary">
+                    <div class="summary-title">Order Summary</div>
+                    <div class="summary-row">
+                        <span>Selected Drink:</span>
+                        <span id="selected-drink">None</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Sugar:</span>
+                        <span id="selected-sugar">With Sugar</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Amount:</span>
+                        <span id="total-amount">₹0</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="processOrder()" id="order-btn" disabled>
+                        <span class="btn-icon-large">💳</span>
+                        <span>Order & Pay Now</span>
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearOrder()">
+                        <span class="btn-icon-large">🔄</span>
+                        <span>Clear Selection</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="stock-alerts"></div>
+
+        <!-- ==================== STATUS AREA ==================== -->
+        <div class="card">
+            <div class="status-area status-idle" id="status-area">
+                <div class="status-icon" id="status-icon">🛒</div>
+                <div class="status-text" id="status-text">Ready to Serve</div>
+                <div class="status-subtext" id="status-subtext">Select a drink from the menu to begin</div>
+            </div>
+            <!-- Drink Ready Notification -->
+            <div id="drink-ready-notification" class="drink-ready-notification hidden">
+                <div class="ready-animation">
+                    <div class="ready-icon">✅</div>
+                    <div class="ready-text">Your Drink is Ready!</div>
+                    <div class="ready-subtext">Please collect from dispenser</div>
+                    <div class="ready-drink-info" id="ready-drink-info"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== STOCK & SALES INFO ==================== -->
+        <div class="info-grid">
+            <!-- Stock Information -->
+            <div class="info-card">
+                <h3 class="info-title">📦 Current Stock</h3>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-label">Tea Powder</span>
+                        <span class="info-value" id="stock-tea">100 g</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Coffee Powder</span>
+                        <span class="info-value" id="stock-coffee">100 g</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Sugar</span>
+                        <span class="info-value" id="stock-sugar">200 g</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Milk</span>
+                        <span class="info-value" id="stock-milk">2000 ml</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Cups</span>
+                        <span class="info-value" id="stock-cups">50 pcs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Information -->
+            <div class="info-card">
+                <h3 class="info-title">📊 Today's Sales</h3>
+                <div class="info-list">
+                    <div class="info-item">
+                        <span class="info-label">Tea Sold</span>
+                        <span class="info-value" id="sales-tea">0 cups</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Coffee Sold</span>
+                        <span class="info-value" id="sales-coffee">0 cups</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Total Revenue</span>
+                        <span class="info-value" id="sales-revenue">₹0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Total Cost</span>
+                        <span class="info-value" id="sales-cost">₹0</span>
+                    </div>
+                </div>
+                <div class="profit-highlight">
+                    <div class="profit-label">💰 Today's Profit</div>
+                    <div class="profit-value" id="profit">₹0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
