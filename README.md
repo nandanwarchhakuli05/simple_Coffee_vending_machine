@@ -28,7 +28,4 @@ This project simulates a vending machine where users can select tea or coffee wi
 - **CSS** – Styling and layout  
 - **JavaScript** – Logic for vending machine operations  
 
----
-
-## 📂 Project Structure
 
